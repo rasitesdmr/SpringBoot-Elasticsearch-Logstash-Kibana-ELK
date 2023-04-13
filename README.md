@@ -116,6 +116,8 @@ mevcut altyapı ve süreçlere hızlı ve kolay bir şekilde adapte edilmesini s
 <img src = "https://github.com/rasitesdmr/SpringBoot-Elasticsearch-Logstash-Kibana-ELK/blob/master/images/elk5.png">
 </p>
 
+* docker-compose.yaml
+
 ```yaml
 docker-compose -f docker-compose.dev.yaml up -d
 docker-compose -f docker-compose.elk.yaml up -d
