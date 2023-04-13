@@ -1,7 +1,7 @@
 # 🎯 ELK NEDİR ?
 
 <p align ="center">
-<img src = "elk1">
+<img src = "https://github.com/rasitesdmr/SpringBoot-Elasticsearch-Logstash-Kibana-ELK/blob/master/images/elk1.png">
 </p>
 
 * ELK, Elasticsearch, Logstash ve Kibana'nın baş harflerinden oluşan bir kısaltmadır ve bu üç açık kaynaklı aracın
@@ -41,7 +41,7 @@ mevcut altyapı ve süreçlere hızlı ve kolay bir şekilde adapte edilmesini s
 ## 📌 Elasticsearch Nedir ?
 
 <p align ="center">
-<img src = "elk2">
+<img src = "https://github.com/rasitesdmr/SpringBoot-Elasticsearch-Logstash-Kibana-ELK/blob/master/images/elk2.png">
 </p>
 
 * ELK yığınının kalbi ve merkezi depolama sistemidir.
@@ -63,7 +63,7 @@ mevcut altyapı ve süreçlere hızlı ve kolay bir şekilde adapte edilmesini s
 ## 📌 Logstash Nedir ?
 
 <p align ="center">
-<img src = "elk3">
+<img src = "https://github.com/rasitesdmr/SpringBoot-Elasticsearch-Logstash-Kibana-ELK/blob/master/images/elk3.png">
 </p>
 
 * Log yönetimi ve veri toplama aracıdır. Logstash, farklı kaynaklardan (örn. sunucular, uygulamalar, veritabanları)
@@ -82,7 +82,7 @@ mevcut altyapı ve süreçlere hızlı ve kolay bir şekilde adapte edilmesini s
 ## 📌 Kibana Nedir ?
 
 <p align ="center">
-<img src = "elk4">
+<img src = "https://github.com/rasitesdmr/SpringBoot-Elasticsearch-Logstash-Kibana-ELK/blob/master/images/elk4.png">
 </p>
 
 * Veri görselleştirme ve analiz aracıdır. Kibana, Elasticsearch üzerinde saklanan verilere dayalı olarak görsel ve
