@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+
+  database:
+    container_name: postgresqlDb
+    image: postgres:15.2
+    ports:
+      - "5434:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: rasitesdmr
+      POSTGRES_PASSWORD: rasitesdmr
+      POSTGRES_DB: database
+    networks:
+      - comment
+
+networks:
+  comment:
+    driver: bridge

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Spring Boot'un varsayılan logback yapılandırmasını içe aktarır -->
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <!-- Logstash'e log göndermek için kullanılacak 'logstash' adlı bir appender tanımlar -->
+    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <!-- Logstash sunucusunun adresini (host ve port) belirtir -->
+        <destination>localhost:5000</destination>
+
+        <!-- Logları JSON formatında dönüştüren bir encoder kullanılır -->
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <!-- JSON log mesajının içinde hangi bilgilerin yer alacağını belirleyen sağlayıcılar -->
+            <providers>
+                <!-- Mapped Diagnostic Context (MDC) bilgilerini ekler -->
+                <mdc/>
+                <!-- Loglama bağlamını ekler -->
+                <context/>
+                <!-- Log seviyesini ekler (örn. INFO, ERROR, DEBUG) -->
+                <logLevel/>
+                <!-- Loglayıcı adını ekler (örn. sınıf adı) -->
+                <loggerName/>
+                <!-- Özel log alanları eklemek için kullanılır -->
+                <pattern>
+                    <pattern>
+                        {
+                        "app": "client"
+                        }
+                    </pattern>
+                </pattern>
+                <!-- İş parçacığı adını ekler -->
+                <threadName/>
+                <!-- Log mesajını ekler -->
+                <message/>
+                <!-- Logstash marker'larını ekler -->
+                <logstashMarkers/>
+                <!-- Hata durumunda, hata izini (stack trace) ekler -->
+                <stackTrace/>
+            </providers>
+        </encoder>
+    </appender>
+    <root level="info">
+        <appender-ref ref="logstash"/>
+    </root>
+</configuration>
