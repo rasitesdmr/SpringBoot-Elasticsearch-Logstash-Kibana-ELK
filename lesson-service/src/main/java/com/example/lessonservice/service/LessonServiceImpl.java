@@ -23,8 +23,8 @@ public class LessonServiceImpl implements LessonService {
 
 
         if (lessonRepository.existsByCode(lessonCreateRequest.getCode().toUpperCase())) {
-            log.error(lessonCreateRequest.getCode() + "coda sahip ders zaten mevcut!");
-            throw new AlreadyAvailableException(lessonCreateRequest.getCode() + "coda sahip ders zaten mevcut!");
+            log.error(lessonCreateRequest.getCode() + " coda sahip ders zaten mevcut!");
+            throw new AlreadyAvailableException(lessonCreateRequest.getCode() + " coda sahip ders zaten mevcut!");
         }
 
         Lesson lesson = new Lesson();
@@ -33,7 +33,7 @@ public class LessonServiceImpl implements LessonService {
         lesson.setActive(true);
 
         lessonRepository.save(lesson);
-        log.info(lesson.getName() + "dersi kayıt işlemi tamamlandı.");
+        log.info(lesson.getName() + " dersi kayıt işlemi tamamlandı.");
 
         LessonCreateResponse lessonCreateResponse = new LessonCreateResponse();
         lessonCreateResponse.setId(lesson.getId());

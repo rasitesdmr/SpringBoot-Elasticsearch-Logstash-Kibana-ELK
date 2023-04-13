@@ -30,7 +30,7 @@ public class StudentServiceImpl implements StudentService {
         }
         if (studentRepository.existsBySchoolNumber(schoolNumber)) {
             log.error(schoolNumber + " numaralı öğrenci zaten mecvut!");
-            throw new AlreadyAvailableException(schoolNumber + "numaralı öğrenci zaten mecvut!");
+            throw new AlreadyAvailableException(schoolNumber + " numaralı öğrenci zaten mecvut!");
         }
 
         Student student = new Student();

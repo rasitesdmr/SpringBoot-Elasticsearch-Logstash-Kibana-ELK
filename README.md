@@ -11,12 +11,12 @@
   analitik platformudur.
 
 * ELK ya neden ihtiyaç duyarız ?
-  
+
 1-)Büyük veri analizi: Günümüzde şirketler ve organizasyonlar, büyük miktarda veriyle başa çıkmak zorundadır. ELK, bu
-  verileri hızlı ve etkili bir şekilde analiz etmeyi, anlamayı ve değerlendirmeyi sağlar.
+verileri hızlı ve etkili bir şekilde analiz etmeyi, anlamayı ve değerlendirmeyi sağlar.
 
 2-) Log yönetimi: Sistemler, uygulamalar ve ağlar sürekli olarak log üretir. Bu logları yönetmek ve analiz etmek
-  karmaşık ve zorlu bir görev olabilir. ELK, bu süreci basitleştirir ve daha düzenli hale getirir.
+karmaşık ve zorlu bir görev olabilir. ELK, bu süreci basitleştirir ve daha düzenli hale getirir.
 
 3-) Performans izleme: ELK, sistem performansını ve uygulama hatalarını gerçek zamanlı olarak izlemeye ve analiz etmeye
 yardımcı olur. Bu, daha hızlı ve etkili bir şekilde sorunları tespit etmek ve çözmek için kullanılabilir.
@@ -100,3 +100,45 @@ mevcut altyapı ve süreçlere hızlı ve kolay bir şekilde adapte edilmesini s
 | `Aggregation `        | Elasticsearch'teki veriler üzerinde özetleme veya istatistiksel analiz gerçekleştirmek için kullanılan işlemdir. Kibana, görselleştirmeler oluştururken bu özetleme işlemlerini kullanır. Aggregation türleri arasında metrik (ortalama, toplam, min, max), bucket (kategorilere ayırma) ve boru hattı (aggregation sonuçları üzerinde işlem yapma) bulunur.                                                                                     |
 | `Query `              | Elasticsearch verilerini sorgulamak ve filtrelemek için kullanılan ifadelerdir. Kibana, verileri aramak, görselleştirmeler oluşturmak ve dashboard'larda göstermek için sorguları kullanır.                                                                                                                                                                                                                                                      |
 | `Filter `             | Kibana'da, görselleştirmelerde veya dashboard'larda gösterilecek veriyi belirli kriterlere göre sınırlamak için kullanılan koşullardır. Filtreler, veri analizinde daha spesifik ve odaklı sonuçlar elde etmek için kullanılabilir.                                                                                                                                                                                                              |
+
+## 📌 ELK İçin Gerekli Olan Adımlar ?
+
+| Settings                                                              | Explanation                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|-----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [logstash.yml](./logstash/config/logstash.yml)                        | Bu dosya, Logstash'in temel yapılandırma ayarlarını içerir. Bu yapılandırma dosyasında, Logstash'in hangi IP adresini dinleyeceği, hangi dizindeki dosyaların işleneceği ve Logstash'in Elasticsearch ile iletişim kurmak için hangi adresi kullanacağı gibi temel bilgileri belirtirsiniz.                                                                                                                                                             |
+| [logstash.conf](./logstash/pipeline/logstash.conf)                    | Bu dosya, Logstash'in logları nasıl işleyeceğini ve sonunda nereye göndereceğini tanımlar. Girdi olarak, TCP bağlantısı üzerinden gelen JSON formatındaki logları kabul eder. Çıktı olarak ise, işlenen logları belirtilen Elasticsearch sunucusuna gönderir ve bu logların hangi index'e kaydedileceğini belirler.                                                                                                                                     |
+| [logback-spring.xml](./client/src/main/resources/logback-spring.xml)  | Bu dosya, Spring Boot uygulamanızın loglama yapılandırmasını içerir. Burada, logların Logstash sunucusuna nasıl gönderileceğini ve hangi formatta olacağını tanımlarsınız. LogstashTcpSocketAppender sınıfı kullanılarak, loglar JSON formatında ve belirtilen IP adresi ve port numarasına gönderilir. Bu yapılandırma dosyasında ayrıca, JSON log mesajlarının içinde hangi bilgilerin yer alacağı ve bu alanların nasıl doldurulacağı da belirtilir. |
+| [docker-compose.elk.yaml](./docker-compose.elk.yaml)                  | Elasticsearch , Kibana ,Logstash                                                                                                                                                                                                                                                                                                                                                                                                                        |
+
+## 📌 Proje Hakkında Özet ?
+
+<p align ="center">
+<img src = "https://github.com/rasitesdmr/SpringBoot-Elasticsearch-Logstash-Kibana-ELK/blob/master/images/elk5.png">
+</p>
+
+```yaml
+docker-compose -f docker-compose.dev.yaml up -d
+docker-compose -f docker-compose.elk.yaml up -d
+
+```
+
+```yaml
+docker-compose -f docker-compose.dev.yaml down -v
+docker-compose -f docker-compose.elk.yaml down -v
+```
+
+⏭️Client Swagger : http://localhost:1000/swagger-ui.html
+⏭️Kibana : http://localhost:5601
+
+<p align ="center">
+<img src = "https://github.com/rasitesdmr/SpringBoot-Elasticsearch-Logstash-Kibana-ELK/blob/master/images/elk6.png">
+</p>
+
+<p align ="center">
+<img src = "https://github.com/rasitesdmr/SpringBoot-Elasticsearch-Logstash-Kibana-ELK/blob/master/images/elk7.png">
+</p>
+
+<p align ="center">
+<img src = "https://github.com/rasitesdmr/SpringBoot-Elasticsearch-Logstash-Kibana-ELK/blob/master/images/elk8.png">
+</p>
+
